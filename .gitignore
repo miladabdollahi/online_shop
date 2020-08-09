@@ -240,3 +240,4 @@ fabric.properties
 
 # Other file and directory for ignore
 **/migrations/
+online_shop/secure_config.py
