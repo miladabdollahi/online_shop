@@ -1,7 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.models import BaseUserManager
+from django.utils.translation import gettext_lazy as _
+from django.utils import timezone
 from phonenumber_field.modelfields import PhoneNumberField
+from . import utility
 
 
 class UserManager(BaseUserManager):
@@ -9,23 +12,23 @@ class UserManager(BaseUserManager):
 
     use_in_migrations = True
 
-    def _create_user(self, email, password, **extra_fields):
-        """Create and save a User with the given email and password."""
-        if not email:
-            raise ValueError('The given email must be set')
-        email = self.normalize_email(email)
-        user = self.model(email=email, **extra_fields)
+    def _create_user(self, phone, password, **extra_fields):
+        """Create and save a User with the given phone and password."""
+        if not phone:
+            raise ValueError('The given phone must be set')
+        phone = utility.normalize_phone(phone)
+        user = self.model(phone=phone, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_user(self, email, password=None, **extra_fields):
+    def create_user(self, phone, password=None, **extra_fields):
         """Create and save a regular User with the given email and password."""
         extra_fields.setdefault('is_staff', False)
         extra_fields.setdefault('is_superuser', False)
-        return self._create_user(email, password, **extra_fields)
+        return self._create_user(phone, password, **extra_fields)
 
-    def create_superuser(self, email, password, **extra_fields):
+    def create_superuser(self, phone, password, **extra_fields):
         """Create and save a SuperUser with the given email and password."""
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
@@ -35,17 +38,39 @@ class UserManager(BaseUserManager):
         if extra_fields.get('is_superuser') is not True:
             raise ValueError('Superuser must have is_superuser=True.')
 
-        return self._create_user(email, password, **extra_fields)
+        return self._create_user(phone, password, **extra_fields)
 
 
 class User(AbstractUser):
     username = None
-    USERNAME_FIELD = 'email'
+    USERNAME_FIELD = 'phone'
 
-    email = models.EmailField(unique=True)
+    email = models.EmailField()
     phone = PhoneNumberField(unique=True)
     REQUIRED_FIELDS = []
     objects = UserManager()
 
     def __str__(self):
-        return self.email
+        return str(self.phone)
+
+
+class OTP(models.Model):
+    phone = PhoneNumberField(unique=True)
+    otp_code = models.SmallIntegerField()
+    otp_code_created = models.DateTimeField(verbose_name=_('otp code created date'))
+    otp_code_expire_time = models.FloatField(default=180,
+                                             verbose_name=_('otp code expire time'))
+    is_active = models.BooleanField(default=False)
+    otp_is_verified = models.BooleanField(default=False)
+    created = models.DateTimeField(auto_now_add=True,
+                                   verbose_name=_('otp table row created date'))
+
+    def get_otp_code_expired_time(self):
+        return self.otp_code_expire_time - (timezone.now().timestamp() - self.otp_code_created.timestamp())
+
+    def is_otp_code_expired(self):
+        diff_time = timezone.now().timestamp() - self.otp_code_created.timestamp()
+        if diff_time > self.otp_code_expire_time:
+            return True
+
+        return False
