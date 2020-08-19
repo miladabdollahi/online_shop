@@ -237,6 +237,3 @@ fabric.properties
 .idea/modules.xml
 .idea/online_shop.iml
 .idea/vcs.xml
-
-# Other file and directory for ignore
-**/migrations/
