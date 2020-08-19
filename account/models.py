@@ -16,7 +16,7 @@ class UserManager(BaseUserManager):
         """Create and save a User with the given phone and password."""
         if not phone:
             raise ValueError('The given phone must be set')
-        phone = utility.normalize_phone(phone)
+        phone, is_valid_phone = utility.normalize_phone(phone)
         user = self.model(phone=phone, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
