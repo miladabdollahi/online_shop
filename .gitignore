@@ -237,3 +237,4 @@ fabric.properties
 .idea/modules.xml
 .idea/online_shop.iml
 .idea/vcs.xml
+.idea/*
