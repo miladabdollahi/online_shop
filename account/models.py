@@ -3,8 +3,8 @@ from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.models import BaseUserManager
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
-from phonenumber_field.modelfields import PhoneNumberField
-from . import utility
+
+from account import utility
 
 
 class UserManager(BaseUserManager):
@@ -46,7 +46,8 @@ class User(AbstractUser):
     USERNAME_FIELD = 'phone'
 
     email = models.EmailField()
-    phone = PhoneNumberField(unique=True)
+    phone = models.CharField(max_length=128,
+                             unique=True)
     REQUIRED_FIELDS = []
     objects = UserManager()
 
@@ -55,7 +56,8 @@ class User(AbstractUser):
 
 
 class OTP(models.Model):
-    phone = PhoneNumberField(unique=True)
+    phone = models.CharField(max_length=128,
+                             unique=True)
     otp_code = models.SmallIntegerField()
     otp_code_created = models.DateTimeField(verbose_name=_('otp code created date'))
     otp_code_expire_time = models.FloatField(default=180,

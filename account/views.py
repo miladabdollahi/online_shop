@@ -1,12 +1,13 @@
 from django.utils import timezone
 from rest_framework.decorators import api_view, permission_classes
+from rest_framework import status
 from rest_framework.response import Response
-from rest_framework import status, permissions
 from rest_framework.authtoken.models import Token
 
-from .models import User, OTP
-from .permissions import IsExistedUser, IsNotExistedUser, IsAuthenticated
-from . import utility
+from account.models import User, OTP
+from extended_lib.rest_framework import permissions
+from account import utility
+from costumer.models import Costumer
 
 
 @api_view(['POST'])
@@ -81,7 +82,7 @@ def login_register(request):
 
 
 @api_view(['POST'])
-@permission_classes([IsNotExistedUser])
+@permission_classes([permissions.IsNotExistedUser])
 def register_confirm(request):
     phone, is_valid_phone = utility.normalize_phone(request.data.get('phone'))
     otp_code = request.data.get('otp_code')
@@ -99,6 +100,7 @@ def register_confirm(request):
             otp.verified_otp = True
             otp.save()
             user = User.objects.create(phone=phone)
+            Costumer.objects.create(user=Costumer)
             token, created = Token.objects.get_or_create(user=user)
             return Response({
                 'data': {
@@ -117,7 +119,7 @@ def register_confirm(request):
 
 
 @api_view(['POST'])
-@permission_classes([IsExistedUser])
+@permission_classes([permissions.IsExistedUser])
 def login_confirm(request):
     phone, is_valid_phone = utility.normalize_phone(request.data.get('phone'))
     email = request.data.get('email')
@@ -145,7 +147,7 @@ def login_confirm(request):
 
 
 @api_view(['POST'])
-@permission_classes([IsExistedUser])
+@permission_classes([permissions.IsExistedUser])
 def login_by_otp_confirm(request):
     phone, is_valid_phone = utility.normalize_phone(request.data.get('phone'))
     otp_code = request.data.get('otp_code')
@@ -186,7 +188,7 @@ def login_by_otp_confirm(request):
 
 
 @api_view(['POST'])
-@permission_classes([IsExistedUser])
+@permission_classes([permissions.IsExistedUser])
 def send_otp_code(request):
     phone, is_valid_phone = utility.normalize_phone(request.data.get('phone'))
 
@@ -216,7 +218,7 @@ def send_otp_code(request):
 
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated])
+@permission_classes([permissions.IsAuthenticated])
 def rest_password(request):
     password = request.data.get('password')
     phone, is_valid_phone = utility.normalize_phone(request.data.get('phone'))
@@ -230,4 +232,3 @@ def rest_password(request):
             'password_is_changed': True
         }
     }, status=status.HTTP_200_OK)
-

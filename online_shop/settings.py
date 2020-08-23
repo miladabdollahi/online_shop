@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'account',
+    'costumer',
     'phonenumber_field',
     'rest_framework',
     'rest_framework.authtoken',

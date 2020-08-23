@@ -1,10 +1,13 @@
-from rest_framework.permissions import BasePermission
+from rest_framework import permissions
 from rest_framework import exceptions
-from . import utility
-from .models import User
+from django.contrib.auth import get_user_model
+
+from account import utility
+
+User = get_user_model()
 
 
-class IsExistedUser(BasePermission):
+class IsExistedUser(permissions.BasePermission):
     message = {
         'data': {
             'user_is_existed': False
@@ -36,7 +39,7 @@ class IsExistedUser(BasePermission):
         return False
 
 
-class IsNotExistedUser(BasePermission):
+class IsNotExistedUser(permissions.BasePermission):
     message = {
         'data': {
             'user_is_existed': True
@@ -44,15 +47,28 @@ class IsNotExistedUser(BasePermission):
     }
 
     def has_permission(self, request, view):
-        return not IsExistedUser().has_permission(request, view)
+        return bool(not IsExistedUser().has_permission(request, view))
 
 
-class IsAuthenticated(BasePermission):
+class IsAuthenticated(permissions.IsAuthenticated):
     message = {
         'data': {
             'user_is_login': False
         }
     }
 
-    def has_permission(self, request, view):
-        return bool(request.user and request.user.is_authenticated)
+
+class IsOwner(permissions.IsAuthenticated):
+    message = {
+        'data': {
+            'user_is_owner': False,
+            'msg': 'this user is not owner of costumer'
+        }
+    }
+
+    def has_object_permission(self, request, view, obj):
+        return bool(obj.user == request.user)
+
+
+class AllowAny(permissions.AllowAny):
+    pass
