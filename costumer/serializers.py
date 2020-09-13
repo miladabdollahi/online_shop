@@ -10,19 +10,23 @@ User = get_user_model()
 
 class CostumerSerializer(ModelSerializer):
     phone = serializers.ReadOnlyField(
+        label='تلفن همراه',
         source='user.phone'
     )
     email = serializers.EmailField(
+        label='ایمیل',
         source='user.email',
         allow_blank=True,
         validators=[UniqueValidator(queryset=User.objects.all())]
     )
     first_name = serializers.CharField(
+        label='نام',
         source='user.first_name',
         max_length=30,
         allow_blank=True
     )
     last_name = serializers.CharField(
+        label='نام خانوادگی',
         source='user.last_name',
         max_length=150,
         allow_blank=True
@@ -30,7 +34,21 @@ class CostumerSerializer(ModelSerializer):
 
     class Meta:
         model = Costumer
-        exclude = ['bank_card']
+        exclude = ['bank_card', 'user']
+        extra_kwargs = {
+            'national_code': {
+                'label': 'کد ملی'
+            },
+            'birth_day': {
+                'label': 'تاریخ تولد'
+            },
+            'job': {
+                'label': 'شغل'
+            },
+            'bank_card': {
+                'label': 'شماره کارت بانکی'
+            }
+        }
 
     def update(self, instance, validated_data):
         if validated_data.get('user'):
