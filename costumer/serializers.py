@@ -35,20 +35,6 @@ class CostumerSerializer(ModelSerializer):
     class Meta:
         model = Costumer
         exclude = ['bank_card', 'user']
-        extra_kwargs = {
-            'national_code': {
-                'label': 'کد ملی'
-            },
-            'birth_day': {
-                'label': 'تاریخ تولد'
-            },
-            'job': {
-                'label': 'شغل'
-            },
-            'bank_card': {
-                'label': 'شماره کارت بانکی'
-            }
-        }
 
     def update(self, instance, validated_data):
         if validated_data.get('user'):

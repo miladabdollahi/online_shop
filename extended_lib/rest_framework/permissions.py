@@ -1,6 +1,7 @@
 from rest_framework import permissions
 from rest_framework import exceptions
 from django.contrib.auth import get_user_model
+from django.utils.translation import gettext_lazy as _
 
 from account import utility
 
@@ -25,10 +26,10 @@ class IsExistedUser(permissions.BasePermission):
             username = phone
 
         if not username:
-            raise exceptions.NotFound('phone and email field cant empty!')
+            raise exceptions.NotFound(_('phone and email field cant empty!'))
 
         if not utility.is_valid_username(username):
-            raise exceptions.ValidationError('email or phone is invalid!')
+            raise exceptions.ValidationError(_('email or phone is invalid!'))
 
         if utility.is_valid_email(username) and User.objects.filter(
                 email=username).exists() \
@@ -62,7 +63,7 @@ class IsOwner(permissions.IsAuthenticated):
     message = {
         'data': {
             'user_is_owner': False,
-            'msg': 'this user is not owner of costumer'
+            'msg': _('this user is not owner of costumer')
         }
     }
 
