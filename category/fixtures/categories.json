@@ -1,0 +1,233 @@
+[
+  {
+    "pk": 1,
+    "model": "category.category",
+    "fields": {
+      "name": "کالای دیجیتال"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "category.category",
+    "fields": {
+      "name": "خودرو، ابزار و اداری"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "category.category",
+    "fields": {
+      "name": "مد و پوشاک"
+    }
+  },
+  {
+    "pk": 4,
+    "model": "category.category",
+    "fields": {
+      "name": "زیبایی و سلامت"
+    }
+  },
+  {
+    "pk": 5,
+    "model": "category.category",
+    "fields": {
+      "name": "خانه و آشپزخانه"
+    }
+  },
+  {
+    "pk": 6,
+    "model": "category.category",
+    "fields": {
+      "name": "کتاب، لوازم تحریر و هنر"
+    }
+  },
+  {
+    "pk": 7,
+    "model": "category.category",
+    "fields": {
+      "name": "اسباب بازی، کودک و نوزاد"
+    }
+  },
+  {
+    "pk": 8,
+    "model": "category.category",
+    "fields": {
+      "name": "ورزش و سفر"
+    }
+  },
+  {
+    "pk": 9,
+    "model": "category.category",
+    "fields": {
+      "name": "خوردنی و آشامیدنی"
+    }
+  },
+  {
+    "pk": 10,
+    "model": "category.category",
+    "fields": {
+      "name": "موبایل",
+      "parent": 1
+    }
+  },
+  {
+    "pk": 11,
+    "model": "category.category",
+    "fields": {
+      "name": "کنسول بازی",
+      "parent": 1
+    }
+  },
+  {
+    "pk": 12,
+    "model": "category.category",
+    "fields": {
+      "name": "تبلت و کتابخوان",
+      "parent": 1
+    }
+  },
+  {
+    "pk": 13,
+    "model": "category.category",
+    "fields": {
+      "name": "لپتاب",
+      "parent": 1
+    }
+  },
+  {
+    "pk": 14,
+    "model": "category.category",
+    "fields": {
+      "name": "دوربین",
+      "parent": 1
+    }
+  },
+  {
+    "pk": 15,
+    "model": "category.category",
+    "fields": {
+      "name": "کامپیوتر و تجهیزات جانبی",
+      "parent": 1
+    }
+  },
+  {
+    "pk": 16,
+    "model": "category.category",
+    "fields": {
+      "name": "ماشین های اداری",
+      "parent": 1
+    }
+  },
+  {
+    "pk": 17,
+    "model": "category.category",
+    "fields": {
+      "name": "لوازم جانبی کالای دیجیتال",
+      "parent": 1
+    }
+  },
+  {
+    "pk": 18,
+    "model": "category.category",
+    "fields": {
+      "name": "ساعت و مچ بند هوشمند",
+      "parent": 1
+    }
+  },
+  {
+    "pk": 19,
+    "model": "category.category",
+    "fields": {
+      "name": "",
+      "parent": 2
+    }
+  },
+  {
+    "pk": 20,
+    "model": "category.category",
+    "fields": {
+      "name": "",
+      "parent": 2
+    }
+  },
+  {
+    "pk": 21,
+    "model": "category.category",
+    "fields": {
+      "name": "",
+      "parent": 2
+    }
+  },
+  {
+    "pk": 22,
+    "model": "category.category",
+    "fields": {
+      "name": "",
+      "parent": 2
+    }
+  },
+  {
+    "pk": 23,
+    "model": "category.category",
+    "fields": {
+      "name": "",
+      "parent": 2
+    }
+  },
+  {
+    "pk": 24,
+    "model": "category.category",
+    "fields": {
+      "name": "",
+      "parent": 2
+    }
+  },
+  {
+    "pk": 25,
+    "model": "category.category",
+    "fields": {
+      "name": "",
+      "parent": 2
+    }
+  },
+  {
+    "pk": 26,
+    "model": "category.category",
+    "fields": {
+      "name": "",
+      "parent": 2
+    }
+  },
+  {
+    "pk": 27,
+    "model": "category.category",
+    "fields": {
+      "name": "",
+      "parent": 2
+    }
+  },
+  {
+    "pk": 28,
+    "model": "category.category",
+    "fields": {
+      "name": "",
+      "parent": 2
+    }
+  },
+  {
+    "pk": 29,
+    "model": "category.category",
+    "fields": {
+      "name": "",
+      "parent": 2
+    }
+  },
+  {
+    "pk": 30,
+    "model": "category.category",
+    "fields": {
+      "name": "",
+      "parent": 2
+    }
+  }
+]

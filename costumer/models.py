@@ -22,3 +22,10 @@ class Costumer(models.Model):
     bank_card = models.IntegerField(verbose_name=_('bank card number'),
                                     blank=True, null=True
                                     )
+
+    class Meta:
+        verbose_name = _('costumer')
+        verbose_name_plural = _('costumers')
+
+    def __str__(self):
+        return self.user.first_name + ' ' + self.user.last_name

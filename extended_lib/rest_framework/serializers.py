@@ -5,6 +5,25 @@ from collections import OrderedDict
 
 
 class ModelSerializer(serializers.ModelSerializer):
+    def run_validation(self, data=serializers.empty):
+        """
+        We override the default `run_validation`, because the validation
+        performed by validators and the `.validate()` method should
+        be coerced into an error dictionary with a 'non_fields_error' key.
+        """
+        (is_empty_value, data) = self.validate_empty_values(data)
+        if is_empty_value:
+            return data
+
+        value = self.to_internal_value(data).get('data')
+        try:
+            self.run_validators(value)
+            value = self.validate(value)
+            assert value is not None, '.validate() should return the validated data'
+        except (serializers.ValidationError, serializers.DjangoValidationError) as exc:
+            raise serializers.ValidationError(detail=serializers.as_serializer_error(exc))
+
+        return value
 
     def to_internal_value(self, data):
         """
