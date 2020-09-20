@@ -1,0 +1,59 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-16 11:27+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: models.py:12
+msgid "accepted"
+msgstr "پذیرفته شده"
+
+#: models.py:13
+msgid "awaiting approval"
+msgstr "منتظر تایید"
+
+#: models.py:14
+msgid "not approved"
+msgstr "تایید نشده"
+
+#: models.py:20
+msgid "title of comment"
+msgstr "عنوان نظر"
+
+#: models.py:22
+msgid "positive points"
+msgstr "نکات مثبت"
+
+#: models.py:24
+msgid "negative points"
+msgstr "نکات منفی"
+
+#: models.py:26
+msgid "text of comment"
+msgstr "متن نظر"
+
+#: models.py:27
+msgid "status of comment"
+msgstr "وضعیت نظر"
+
+#: models.py:33
+msgid "comment"
+msgstr "نظر"
+
+#: models.py:34
+msgid "comments"
+msgstr "نظرات"

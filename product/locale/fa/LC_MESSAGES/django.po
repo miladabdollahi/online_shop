@@ -1,0 +1,191 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-16 11:26+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: models.py:11
+msgid "name of color"
+msgstr "نام رنگ"
+
+#: models.py:12
+msgid "code of color"
+msgstr "کد رنگ"
+
+#: models.py:15
+msgid "color"
+msgstr "رنگ"
+
+#: models.py:16 models.py:96
+msgid "colors"
+msgstr "رنگ ها"
+
+#: models.py:24
+msgid "iranian brand"
+msgstr "برند ایرانی"
+
+#: models.py:25
+msgid "foreign brand"
+msgstr "برند خارجی"
+
+#: models.py:27
+msgid "english name of brand"
+msgstr "نام خارجی برند"
+
+#: models.py:28
+msgid "persian name of brand"
+msgstr "نام فارسی برند"
+
+#: models.py:29
+msgid "image of brand"
+msgstr "عکس برند"
+
+#: models.py:30
+msgid "type of brand"
+msgstr "نوع برند"
+
+#: models.py:33
+msgid "logo of brand"
+msgstr "لوگوی برند"
+
+#: models.py:33
+msgid "height and width 600 X 600 px"
+msgstr "عرض و ارتفاع ۶۰۰ در ۶۰۰ می باشد."
+
+#: models.py:40
+msgid "name of type"
+msgstr "نام نوع"
+
+#: models.py:41
+msgid "value of type"
+msgstr "مقدار نوع"
+
+#: models.py:44
+msgid "product type"
+msgstr "نوع محصول"
+
+#: models.py:45
+msgid "product types"
+msgstr "نوع محصولات"
+
+#: models.py:52
+msgid "width"
+msgstr "عرض"
+
+#: models.py:53
+msgid "height"
+msgstr "ارتفاع"
+
+#: models.py:54
+msgid "length"
+msgstr "طول"
+
+#: models.py:55
+msgid "weight"
+msgstr "وزن"
+
+#: models.py:58
+msgid "packing"
+msgstr "بسته بندی"
+
+#: models.py:59 models.py:73
+msgid "packaging"
+msgstr "بسته بندی ها"
+
+#: models.py:63
+msgid "english name of product"
+msgstr "نام خارجی محصول"
+
+#: models.py:64
+msgid "persian name of product"
+msgstr "نام فارسی محصول"
+
+#: models.py:65
+msgid "originality of product"
+msgstr "اصل بودن محصول"
+
+#: models.py:68
+msgid "brand"
+msgstr "برند"
+
+#: models.py:70
+msgid "type"
+msgstr "نوع"
+
+#: models.py:74
+msgid "description of product"
+msgstr "توضیحات محصول"
+
+#: models.py:75
+msgid "positive points"
+msgstr "نکات مقبت"
+
+#: models.py:76
+msgid "negative points"
+msgstr "نکات منفی"
+
+#: models.py:79
+msgid "product information"
+msgstr "اطلاعات محصول"
+
+#: models.py:80
+msgid "product informations"
+msgstr "اطلاعات محصولات"
+
+#: models.py:91
+msgid "sellers"
+msgstr "فروشنده ها"
+
+#: models.py:94
+msgid "category"
+msgstr "دسته بندی"
+
+#: models.py:99
+msgid "information of product"
+msgstr "اطلاعات محصول"
+
+#: models.py:102
+msgid "specification"
+msgstr "ویژگی"
+
+#: models.py:103
+msgid "tag of product"
+msgstr "تگ محصول"
+
+#: models.py:104
+msgid "images of product"
+msgstr "عکس محصول"
+
+#: models.py:105
+msgid "price of product"
+msgstr "قیمت محصول"
+
+#: models.py:106
+msgid "discount"
+msgstr "تخفیف"
+
+#: models.py:107
+msgid "name of guarantee"
+msgstr "نام گارانتی"
+
+#: models.py:110
+msgid "product"
+msgstr "محصول"
+
+#: models.py:111
+msgid "products"
+msgstr "محصولات"
