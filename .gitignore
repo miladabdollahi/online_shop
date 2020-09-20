@@ -83,7 +83,7 @@ coverage.xml
 .pytest_cache/
 
 # Translations
-#*.mo
+*.mo
 *.pot
 
 # Django stuff:
@@ -238,3 +238,10 @@ fabric.properties
 .idea/online_shop.iml
 .idea/vcs.xml
 .idea/*
+
+# Django
+!**/migrations/__init__.py
+**/migrations/*
+
+# secure files
+online_shop/secure_config.py
