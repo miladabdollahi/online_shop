@@ -151,5 +151,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# media files
+# https://docs.djangoproject.com/en/3.0/ref/settings/#media-url
+
+MEDIA_URL = '/media/'
+
 # heroku config
 django_heroku.settings(locals())
