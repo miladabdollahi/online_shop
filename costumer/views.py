@@ -1,9 +1,10 @@
-from rest_framework import viewsets, mixins
+from rest_framework import viewsets
 from rest_framework.response import Response
 
 from costumer.models import Costumer
 from costumer.serializers import CostumerSerializer
 from extended_lib.rest_framework import permissions as perm
+from extended_lib.rest_framework import mixins
 
 
 class CostumerViewSet(viewsets.GenericViewSet,

@@ -1,14 +1,13 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 
-from extended_lib.rest_framework.serializers import ModelSerializer
 from extended_lib.rest_framework.validators import UniqueValidator
 from costumer.models import Costumer
 
 User = get_user_model()
 
 
-class CostumerSerializer(ModelSerializer):
+class CostumerSerializer(serializers.ModelSerializer):
     phone = serializers.ReadOnlyField(
         label='تلفن همراه',
         source='user.phone'

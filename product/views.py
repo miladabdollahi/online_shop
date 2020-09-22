@@ -1,5 +1,6 @@
-from rest_framework import viewsets, mixins
+from rest_framework import viewsets
 
+from extended_lib.rest_framework import mixins
 from product.models import Product
 from product.serializers import (
     ProductSummarySerializer,

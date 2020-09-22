@@ -1,6 +1,5 @@
 from rest_framework import serializers
 
-from extended_lib.rest_framework.serializers import ModelSerializer
 from product.models import (
     Product,
     ProductInformation,
@@ -20,15 +19,15 @@ class ProductInformationSerializer(serializers.ModelSerializer):
         model = ProductInformation
 
 
-class ProductSummarySerializer(ModelSerializer):
+class ProductSummarySerializer(serializers.ModelSerializer):
     colors = ColorSerializer(read_only=True, many=True)
 
     class Meta:
         model = Product
-        fields = ('colors', 'images', 'price', 'discount', 'id')
+        fields = ('id', 'colors', 'images', 'price', 'discount')
 
 
-class ProductSerializer(ModelSerializer):
+class ProductSerializer(serializers.ModelSerializer):
     category = CategoryNestedSerializer()
     colors = ColorSerializer(read_only=True, many=True)
 
