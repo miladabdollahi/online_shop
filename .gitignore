@@ -245,3 +245,4 @@ fabric.properties
 
 # secure files
 online_shop/secure_config.py
+online_shop/settings.py
