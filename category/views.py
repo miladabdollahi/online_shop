@@ -1,5 +1,6 @@
 from rest_framework import viewsets
 from rest_framework.response import Response
+from rest_framework.decorators import action
 
 from extended_lib.rest_framework import mixins
 from category.models import Category
@@ -13,13 +14,22 @@ class CategoryViewSet(viewsets.GenericViewSet,
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
 
+    def list(self, request, *args, **kwargs):
+        queryset = self.filter_queryset(self.get_queryset().filter(parent=None))
 
-class ProductFromCategoryRetrieve(viewsets.GenericViewSet,
-                                  mixins.RetrieveModelMixin):
-    queryset = Category.objects.all()
-    serializer_class = CategorySerializer
+        page = self.paginate_queryset(queryset)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
 
-    def retrieve(self, request, *args, **kwargs):
+        serializer = self.get_serializer(queryset, many=True)
+        return Response({
+            'error': False,
+            'data': serializer.data
+        })
+
+    @action(detail=True, url_path='products', url_name='products_of_category')
+    def products(self, request, *args, **kwargs):
         instance = self.get_object()
         categories = []
         self.get_categories_id(instance, categories)

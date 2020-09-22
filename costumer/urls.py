@@ -1,6 +1,6 @@
-from django.urls import path
-from . import views
 from rest_framework import routers
+
+from . import views
 
 app_name = 'costumer'
 router = routers.SimpleRouter()
