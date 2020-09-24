@@ -67,6 +67,10 @@ class OTP(models.Model):
     created = models.DateTimeField(auto_now_add=True,
                                    verbose_name=_('otp table row created date'))
 
+    class Meta:
+        verbose_name = _('otp')
+        verbose_name_plural = _('otps')
+
     def get_otp_code_expired_time(self):
         return self.otp_code_expire_time - (timezone.now().timestamp() - self.otp_code_created.timestamp())
 

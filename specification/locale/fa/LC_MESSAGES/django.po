@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-16 11:26+0000\n"
+"POT-Creation-Date: 2020-09-23 16:40+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,14 +18,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: models.py:6
+#: specification/apps.py:7 specification/models.py:17
+msgid "specification"
+msgstr "ویژگی"
+
+#: specification/models.py:6
 msgid "name of specification"
 msgstr "نام ویژگی"
 
-#: models.py:7
+#: specification/models.py:8
 msgid "name of field"
 msgstr "نام رشته"
 
-#: models.py:8
+#: specification/models.py:10
 msgid "value of field"
 msgstr "مقدار رشته"
+
+#: specification/models.py:18
+msgid "specifications"
+msgstr "ویژگی ها"

@@ -2,13 +2,11 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-16 11:27+0000\n"
+"POT-Creation-Date: 2020-09-23 13:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +15,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: apps.py:7
+msgid "account"
+msgstr "حساب کاربری"
 
 #: models.py:62
 msgid "otp code created date"
@@ -29,3 +31,11 @@ msgstr "مدت زمان انقضای کد یکبار مصرف."
 #: models.py:68
 msgid "otp table row created date"
 msgstr "تاریخ تشکیل ردیف جدول otp."
+
+#: models.py:71
+msgid "otp"
+msgstr "کد یکبار مصرف"
+
+#: models.py:72
+msgid "otps"
+msgstr "کد های یکبار مصرف"

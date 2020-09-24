@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-13 16:40+0000\n"
+"POT-Creation-Date: 2020-09-23 16:40+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,18 +18,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: rest_framework/permissions.py:29
+#: extended_lib/rest_framework/permissions.py:29
 msgid "phone and email field cant empty!"
 msgstr "ایمیل و شماره تلفن مورد نیاز است."
 
-#: rest_framework/permissions.py:32
+#: extended_lib/rest_framework/permissions.py:32
 msgid "email or phone is invalid!"
 msgstr "ایمیل یا شماره تلفن معتبر نیست."
 
-#: rest_framework/permissions.py:66
+#: extended_lib/rest_framework/permissions.py:66
 msgid "this user is not owner of costumer"
 msgstr "کاربر درخواست دهنده فروشنده نیست!"
 
-#: rest_framework/validators.py:7
+#: extended_lib/rest_framework/validators.py:7
 msgid "This field must be unique."
 msgstr "این فیلد باید یونیک باشد."
