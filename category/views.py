@@ -42,10 +42,12 @@ class CategoryViewSet(viewsets.GenericViewSet,
 
     def get_categories_id(self, instance, categories):
         childs = instance.childs
-        for child in childs.all():
-            if child.childs.all().first() is None:
-                categories.append(child.id)
-            else:
-                self.get_categories_id(child, categories)
-
+        if childs.all().first():
+            for child in childs.all():
+                if child.childs.all().first() is None:
+                    categories.append(child.id)
+                else:
+                    self.get_categories_id(child, categories)
+        else:
+            categories.append(instance.id)
         return categories
