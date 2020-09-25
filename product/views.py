@@ -14,7 +14,7 @@ class ProductSummary(viewsets.GenericViewSet,
     serializer_class = ProductSummarySerializer
 
 
-class ProductList(viewsets.GenericViewSet,
-                  mixins.ListModelMixin):
+class ProductDetail(viewsets.GenericViewSet,
+                    mixins.RetrieveModelMixin):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer

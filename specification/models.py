@@ -18,4 +18,9 @@ class Specification(models.Model):
         verbose_name_plural = _('specifications')
 
     def __str__(self):
-        return self.name
+        full_path = [self.name]
+        k = self.parent
+        while k is not None:
+            full_path.append(k.name)
+            k = k.parent
+        return ' -> '.join(full_path[::-1])

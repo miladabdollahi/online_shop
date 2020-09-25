@@ -113,7 +113,7 @@ class Product(models.Model):
     specification = models.ForeignKey(to=Specification,
                                       on_delete=models.DO_NOTHING, related_name='products',
                                       verbose_name=_('specification'))
-    tag = models.CharField(max_length=150, verbose_name=_('tag of product'))
+    tags = models.CharField(max_length=150, verbose_name=_('tag of product'))
     images = models.ImageField(verbose_name=_('images of product'), upload_to='images')
     price = models.CharField(max_length=50, verbose_name=_('price of product'))
     discount = models.CharField(max_length=3, verbose_name=_('discount'),
