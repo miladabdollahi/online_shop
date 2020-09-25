@@ -69,4 +69,4 @@ class ProductSerializer(serializers.ModelSerializer):
         exclude = ('sellers',)
 
     def get_tags(self, obj):
-        return obj.tag.split(' ')
+        return obj.tags.split(' ')
