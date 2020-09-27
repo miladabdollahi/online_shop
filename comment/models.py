@@ -34,4 +34,7 @@ class Comment(models.Model):
         verbose_name_plural = _('comments')
 
     def __str__(self):
-        return self.title
+        if self.title:
+            return self.title
+
+        return self.product.product_information.persian_name
