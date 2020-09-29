@@ -8,7 +8,7 @@ class CommentsOfProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Comment
-        exclude = ('user',)
+        exclude = ('user', 'status')
 
     def get_full_name(self, obj):
         return obj.user.get_full_name()
