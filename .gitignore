@@ -249,3 +249,5 @@ online_shop/settings.py
 
 # static files
 staticfiles/*
+static
+templates
