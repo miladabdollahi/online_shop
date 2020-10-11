@@ -4,13 +4,14 @@ from rest_framework.decorators import action
 
 from extended_lib.rest_framework import mixins
 from category.models import Category
-from category.serializers import CategorySerializer
+from category.serializers import CategorySerializer, CategroyParentSerializer
 from product.serializers import ProductSummarySerializer
 from product.models import Product
 
 
 class CategoryViewSet(viewsets.GenericViewSet,
-                      mixins.ListModelMixin):
+                      mixins.ListModelMixin,
+                      mixins.RetrieveModelMixin):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
 
@@ -23,6 +24,14 @@ class CategoryViewSet(viewsets.GenericViewSet,
             return self.get_paginated_response(serializer.data)
 
         serializer = self.get_serializer(queryset, many=True)
+        return Response({
+            'error': False,
+            'data': serializer.data
+        })
+
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = CategroyParentSerializer(instance)
         return Response({
             'error': False,
             'data': serializer.data
