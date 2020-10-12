@@ -240,7 +240,6 @@ fabric.properties
 .idea/*
 
 # Django
-!**/migrations/__init__.py
 **/migrations/*
 
 # secure files
