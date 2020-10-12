@@ -1,5 +1,6 @@
 from rest_framework import serializers
 
+from extended_lib.rest_framework.serializers import ModelSerializer
 from product.models import (
     Product,
     ProductInformation,
@@ -12,31 +13,31 @@ from category.serializers import CategoryNestedSerializer
 from specification.serializers import SpecificationSerializer
 
 
-class ColorSerializer(serializers.ModelSerializer):
+class ColorSerializer(ModelSerializer):
     class Meta:
         model = Color
         fields = ('name', 'hex_code',)
 
 
-class BrandSerializer(serializers.ModelSerializer):
+class BrandSerializer(ModelSerializer):
     class Meta:
         model = Brand
         fields = '__all__'
 
 
-class TypeOfProductSerializer(serializers.ModelSerializer):
+class TypeOfProductSerializer(ModelSerializer):
     class Meta:
         model = TypeOfProduct
         fields = '__all__'
 
 
-class PackagingSerializer(serializers.ModelSerializer):
+class PackagingSerializer(ModelSerializer):
     class Meta:
         model = Packaging
         fields = '__all__'
 
 
-class ProductInformationSerializer(serializers.ModelSerializer):
+class ProductInformationSerializer(ModelSerializer):
     brand = BrandSerializer()
     type_of_product = TypeOfProductSerializer(many=True)
     packaging = PackagingSerializer()
@@ -46,7 +47,7 @@ class ProductInformationSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class ProductSummarySerializer(serializers.ModelSerializer):
+class ProductSummarySerializer(ModelSerializer):
     colors = ColorSerializer(read_only=True, many=True)
     name = serializers.ReadOnlyField(
         source='product_information.persian_name'
@@ -57,7 +58,7 @@ class ProductSummarySerializer(serializers.ModelSerializer):
         fields = ('id', 'name', 'colors', 'images', 'price', 'discount',)
 
 
-class ProductSerializer(serializers.ModelSerializer):
+class ProductSerializer(ModelSerializer):
     category = CategoryNestedSerializer()
     colors = ColorSerializer(read_only=True, many=True)
     product_information = ProductInformationSerializer()
