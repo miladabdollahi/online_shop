@@ -71,5 +71,17 @@ class IsOwner(permissions.IsAuthenticated):
         return bool(obj.user == request.user)
 
 
+class IsOwnerCart(permissions.IsAuthenticated):
+    message = {
+        'data': {
+            'costumer_is_owner': False,
+            'msg': _('this user is not owner of costumer')
+        }
+    }
+
+    def has_object_permission(self, request, view, obj):
+        return bool(obj.cart.costumer == request.user.costumer)
+
+
 class AllowAny(permissions.AllowAny):
     pass
