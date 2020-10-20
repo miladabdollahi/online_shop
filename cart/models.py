@@ -1,13 +1,23 @@
 from django.db import models
+from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _
 
-from costumer.models import Costumer
 from product.models import Product
+
+User = get_user_model()
 
 
 class Cart(models.Model):
-    costumer = models.OneToOneField(to=Costumer,
-                                    on_delete=models.CASCADE)
+    STATUS_CART = (
+        ('a', _('add to cart')),
+        ('s', _('shipping')),
+    )
+
+    user = models.OneToOneField(to=User,
+                                on_delete=models.CASCADE)
+
+    status = models.CharField(max_length=1, verbose_name=_('status of cart'),
+                              choices=STATUS_CART)
 
     created_datetime = models.DateTimeField(verbose_name=_('date of row creation'),
                                             auto_now_add=True)

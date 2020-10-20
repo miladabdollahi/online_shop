@@ -4,8 +4,7 @@ from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.decorators import action
 
-from extended_lib.rest_framework import mixins
-from extended_lib.rest_framework import permissions as perm
+from extended_lib.rest_framework import mixins, permissions as perm
 from cart.models import Cart, CartItem
 from product.models import Product
 from cart.serializers import CartItemSerializer, CartItemCreateSerializer
@@ -24,7 +23,7 @@ class CartItemViewSet(viewsets.GenericViewSet,
             return CartItemCreateSerializer
 
     def list(self, request, *args, **kwargs):
-        queryset = self.filter_queryset(self.get_queryset().filter(cart=request.user.costumer.cart))
+        queryset = self.filter_queryset(self.get_queryset().filter(cart__user=request.user))
 
         page = self.paginate_queryset(queryset)
         if page is not None:
@@ -46,13 +45,13 @@ class CartItemViewSet(viewsets.GenericViewSet,
     @action(methods=['post'], detail=False, url_path='add-to-cart', url_name='add-to-cart')
     def add_to_cart(self, request, *args, **kwargs):
         cart_item = request.data.get('cart_item')
-        if Cart.objects.filter(costumer__user=request.user).exists():
+        if Cart.objects.filter(user=request.user).exists():
             if not CartItem.objects.filter(
                     product=cart_item.get('id'),
-                    cart__costumer=request.user.costumer).exists():
+                    cart__user=request.user).exists():
 
                 data = {
-                    'cart': request.user.costumer.cart.pk,
+                    'cart': request.user.cart.pk,
                     'product': cart_item.get('id'),
                     'color': cart_item.get('color'),
                     'size': cart_item.get('size'),
@@ -60,12 +59,11 @@ class CartItemViewSet(viewsets.GenericViewSet,
                 }
                 serializer = self.get_serializer(data=data)
                 serializer.is_valid(raise_exception=True)
-                self.perform_create(serializer)
-                headers = self.get_success_headers(serializer.data)
+                serializer.save()
                 return Response({
                     'error': False,
                     'data': serializer.data,
-                }, status=status.HTTP_201_CREATED, headers=headers)
+                }, status=status.HTTP_201_CREATED)
             else:
                 return Response({
                     'error': True,

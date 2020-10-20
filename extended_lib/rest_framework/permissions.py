@@ -80,7 +80,7 @@ class IsOwnerCart(permissions.IsAuthenticated):
     }
 
     def has_object_permission(self, request, view, obj):
-        return bool(obj.cart.costumer == request.user.costumer)
+        return bool(obj.cart.user == request.user)
 
 
 class AllowAny(permissions.AllowAny):
