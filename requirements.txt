@@ -25,7 +25,7 @@ idna==2.10
 inflection==0.5.0
 ipaddr==2.2.0
 itypes==1.2.0
-Jinja2==2.11.2
+Jinja2==2.11.3
 kavenegar==1.1.2
 lockfile==0.12.2
 MarkupSafe==1.1.1
